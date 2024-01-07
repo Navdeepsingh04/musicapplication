@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
+body {
+  background-color: #5a5a5a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  font-family: "Salsa", cursive;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  height: 30px;
+  background-color: darkgrey;
+  color: white;
+  padding: 20px;
+  align-items: center;
+}
+nav ul li {
+  padding: 0px 10px;
+}
+
+.brand img {
+  width: 40px;
+  padding: 0px 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-style: bolder;
+  font-weight: 1.3em;
+}
+
+.container {
+  min-height: 80vh;
+}
+
+.bottom {
+  display: flex;
+  position: sticky;
+  height: 75px;
+  width: 100vw;
+  background-color: darkgrey;
+  justify-content: center;
+  align-items: center;
+}
+#myProgressBar {
+  width: 80vw;
+}
