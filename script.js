@@ -1,7 +1,9 @@
 let songIndex = 0;
-let audioElement = new Audio("./1.jpg");
+let audioElement = new Audio("./1.mp3");
 let masterPlay = document.getElementById("masterPlay");
 let myProgressBar = document.getElementById("myProgressBar");
+let gif = document.getElementById("gif");
+let songItems = Array.from(document.getElementByClassName("songItem"));
 
 let songs = [
   {
@@ -56,17 +58,37 @@ let songs = [
   },
 ];
 
+songItems.forEach(element, (i) => {
+  element.getElementByTagName("img")[0].src = songs[i].filePath;
+});
+
 //audioElement.play();
 
 // Handle play/pause click
 masterPlay.addEventListener("click", () => {
   if (audioElement.paused || audioElement.currentTime <= 0) {
+    console.log("playing audio");
     audioElement.play();
+    masterPlay.classList.remove("fa-play");
+    masterPlay.classList.add("fa-pause");
+    gif.style.opacity = 1;
+  } else {
+    audioElement.pause();
+    masterPlay.classList.remove("fa-play");
+    masterPlay.classList.add("fa-pause");
+    gif.style.opacity = 0;
   }
 });
 
 //Listen to Events;
-myProgressBar.addEventListener("timeupdate", () => {
+audioElement.addEventListener("timeupdate", () => {
   console.log("timeupdate");
   //update seekbar;
+  progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+  myProgressBar.value = progress;
+});
+
+myProgressBar.addEventListener("change", () => {
+  audioElement.currentTime =
+    (myProgressBar.value * audioElement.duration) / 100;
 });
